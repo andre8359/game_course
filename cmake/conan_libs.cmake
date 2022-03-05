@@ -9,9 +9,14 @@ if(NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
                 "${CMAKE_BINARY_DIR}/conan.cmake")
 endif()
 
+set(CMAKE_CXX_STANDARD 14)
+
 include(${CMAKE_BINARY_DIR}/conan.cmake)
 
-conan_cmake_run(REQUIRES sfml/2.5.1
+conan_cmake_run(REQUIRES
+                ogg/1.3.5
+                sfml/2.5.1
+                nlohmann_json/3.10.5
                 BASIC_SETUP CMAKE_TARGETS
                 BUILD missing)
 
@@ -21,4 +26,4 @@ conan_cmake_autodetect(settings)
 conan_cmake_install(PATH_OR_REFERENCE .
                      BUILD missing
                      REMOTE conancenter
-                     SETTINGS ${settings})
+                     SETTINGS ${settings}) 
